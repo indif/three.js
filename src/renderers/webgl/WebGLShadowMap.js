@@ -3,7 +3,7 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-THREE.WebGLShadowMap = function ( _renderer, _lights, _objects ) {
+THREE.WebGLShadowMap = function ( _renderer, _lights, _objects, capabilities ) {
 
 	var _gl = _renderer.context,
 	_state = _renderer.state,
@@ -13,6 +13,7 @@ THREE.WebGLShadowMap = function ( _renderer, _lights, _objects ) {
 	_lightShadows = _lights.shadows,
 
 	_shadowMapSize = new THREE.Vector2(),
+	_maxShadowMapSize = new THREE.Vector2( capabilities.maxTextureSize, capabilities.maxTextureSize ),
 
 	_lookTarget = new THREE.Vector3(),
 	_lightPositionWorld = new THREE.Vector3(),
@@ -126,6 +127,7 @@ THREE.WebGLShadowMap = function ( _renderer, _lights, _objects ) {
 			var shadowCamera = shadow.camera;
 
 			_shadowMapSize.copy( shadow.mapSize );
+			_shadowMapSize.min( _maxShadowMapSize );
 
 			if ( light instanceof THREE.PointLight ) {
 

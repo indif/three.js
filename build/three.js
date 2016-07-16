@@ -4,7 +4,7 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var THREE = { REVISION: '79dev' };
+var THREE = { REVISION: '79' };
 
 //
 
@@ -17707,7 +17707,7 @@ THREE.DirectionalLight = function ( color, intensity ) {
 
 	this.type = 'DirectionalLight';
 
-	this.position.set( 0, 1, 0 );
+	this.position.copy( THREE.Object3D.DefaultUp );
 	this.updateMatrix();
 
 	this.target = new THREE.Object3D();
@@ -17766,7 +17766,7 @@ THREE.HemisphereLight = function ( skyColor, groundColor, intensity ) {
 
 	this.castShadow = undefined;
 
-	this.position.set( 0, 1, 0 );
+	this.position.copy( THREE.Object3D.DefaultUp );
 	this.updateMatrix();
 
 	this.groundColor = new THREE.Color( groundColor );
@@ -17854,7 +17854,7 @@ THREE.SpotLight = function ( color, intensity, distance, angle, penumbra, decay 
 
 	this.type = 'SpotLight';
 
-	this.position.set( 0, 1, 0 );
+	this.position.copy( THREE.Object3D.DefaultUp );
 	this.updateMatrix();
 
 	this.target = new THREE.Object3D();
@@ -25156,7 +25156,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 	// shadow map
 
-	var shadowMap = new THREE.WebGLShadowMap( this, _lights, objects );
+	var shadowMap = new THREE.WebGLShadowMap( this, _lights, objects, capabilities );
 
 	this.shadowMap = shadowMap;
 
@@ -29644,7 +29644,7 @@ THREE.WebGLShader = ( function () {
  * @author mrdoob / http://mrdoob.com/
  */
 
-THREE.WebGLShadowMap = function ( _renderer, _lights, _objects ) {
+THREE.WebGLShadowMap = function ( _renderer, _lights, _objects, capabilities ) {
 
 	var _gl = _renderer.context,
 	_state = _renderer.state,
@@ -29654,6 +29654,7 @@ THREE.WebGLShadowMap = function ( _renderer, _lights, _objects ) {
 	_lightShadows = _lights.shadows,
 
 	_shadowMapSize = new THREE.Vector2(),
+	_maxShadowMapSize = new THREE.Vector2( capabilities.maxTextureSize, capabilities.maxTextureSize ),
 
 	_lookTarget = new THREE.Vector3(),
 	_lightPositionWorld = new THREE.Vector3(),
@@ -29767,6 +29768,7 @@ THREE.WebGLShadowMap = function ( _renderer, _lights, _objects ) {
 			var shadowCamera = shadow.camera;
 
 			_shadowMapSize.copy( shadow.mapSize );
+			_shadowMapSize.min( _maxShadowMapSize );
 
 			if ( light instanceof THREE.PointLight ) {
 
@@ -36127,9 +36129,17 @@ THREE.EllipseCurve.prototype.getPoint = function( t ) {
 
 	}
 
-	if ( this.aClockwise === true && deltaAngle != twoPi && ! samePoints ) {
+	if ( this.aClockwise === true && ! samePoints ) {
 
-		deltaAngle = deltaAngle - twoPi;
+		if ( deltaAngle === twoPi ) {
+
+			deltaAngle = - twoPi;
+
+		} else {
+
+			deltaAngle = deltaAngle - twoPi;
+
+		}
 
 	}
 
