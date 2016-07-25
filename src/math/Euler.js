@@ -9,8 +9,7 @@ import { _Math } from './Math';
  * @author bhouston / http://clara.io
  */
 
-function Euler ( x, y, z, order ) {
-	this.isEuler = true;
+function Euler( x, y, z, order ) {
 
 	this._x = x || 0;
 	this._y = y || 0;
@@ -26,6 +25,8 @@ Euler.DefaultOrder = 'XYZ';
 Euler.prototype = {
 
 	constructor: Euler,
+
+	isEuler: true,
 
 	get x () {
 
@@ -265,7 +266,7 @@ Euler.prototype = {
 		return function reorder( newOrder ) {
 
 			q.setFromEuler( this );
-			
+
 			return this.setFromQuaternion( q, newOrder );
 
 		};

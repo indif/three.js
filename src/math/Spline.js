@@ -8,8 +8,7 @@ import { Vector3 } from './Vector3';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Spline ( points ) {
-	this.isSpline = true;
+function Spline( points ) {
 
 	this.points = points;
 

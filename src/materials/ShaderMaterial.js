@@ -22,8 +22,7 @@ import { UniformsUtils } from '../renderers/shaders/UniformsUtils';
  * }
  */
 
-function ShaderMaterial ( parameters ) {
-	this.isShaderMaterial = this.isMaterial = true;
+function ShaderMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -81,6 +80,8 @@ function ShaderMaterial ( parameters ) {
 
 ShaderMaterial.prototype = Object.create( Material.prototype );
 ShaderMaterial.prototype.constructor = ShaderMaterial;
+
+ShaderMaterial.prototype.isShaderMaterial = true;
 
 ShaderMaterial.prototype.copy = function ( source ) {
 

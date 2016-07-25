@@ -13,8 +13,7 @@ import { Geometry } from '../../core/Geometry';
  * @author ikerr / http://verold.com
  */
 
-function SkeletonHelper ( object ) {
-	this.isSkeletonHelper = this.isLineSegments = true;
+function SkeletonHelper( object ) {
 
 	this.bones = this.getBoneList( object );
 

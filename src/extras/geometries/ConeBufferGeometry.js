@@ -5,11 +5,10 @@ import { CylinderBufferGeometry } from './CylinderBufferGeometry';
  * @author: abelnation / http://github.com/abelnation
  */
 
-function ConeBufferGeometry (
+function ConeBufferGeometry(
 	radius, height,
 	radialSegments, heightSegments,
 	openEnded, thetaStart, thetaLength ) {
-	this.isConeBufferGeometry = this.isBufferGeometry = true;
 
 	CylinderBufferGeometry.call( this,
 		0, radius, height,

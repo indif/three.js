@@ -7,8 +7,7 @@ import { _Math } from '../math/Math';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Material () {
-	this.isMaterial = true;
+function Material() {
 
 	Object.defineProperty( this, 'id', { value: MaterialIdCount() } );
 
@@ -64,6 +63,8 @@ function Material () {
 Material.prototype = {
 
 	constructor: Material,
+
+	isMaterial: true,
 
 	get needsUpdate() {
 
@@ -213,7 +214,7 @@ Material.prototype = {
 
 		// TODO: Copied from Object3D.toJSON
 
-		function extractFromCache ( cache ) {
+		function extractFromCache( cache ) {
 
 			var values = [];
 
@@ -328,7 +329,7 @@ Material.prototype = {
 Object.assign( Material.prototype, EventDispatcher.prototype );
 
 var count = 0;
-function MaterialIdCount () { return count++; };
+function MaterialIdCount() { return count++; };
 
 
 export { MaterialIdCount, Material };

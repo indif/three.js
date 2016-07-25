@@ -6,8 +6,7 @@ import { PerspectiveCamera } from './PerspectiveCamera';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function StereoCamera () {
-	this.isStereoCamera = true;
+function StereoCamera() {
 
 	this.type = 'StereoCamera';
 

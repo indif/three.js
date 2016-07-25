@@ -4,8 +4,7 @@ import { Curve } from '../core/Curve';
  *	Line
  **************************************************************/
 
-function LineCurve ( v1, v2 ) {
-	this.isLineCurve = this.isCurve = true;
+function LineCurve( v1, v2 ) {
 
 	this.v1 = v1;
 	this.v2 = v2;
@@ -14,6 +13,8 @@ function LineCurve ( v1, v2 ) {
 
 LineCurve.prototype = Object.create( Curve.prototype );
 LineCurve.prototype.constructor = LineCurve;
+
+LineCurve.prototype.isLineCurve = true;
 
 LineCurve.prototype.getPoint = function ( t ) {
 

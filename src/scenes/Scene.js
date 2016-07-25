@@ -4,8 +4,7 @@ import { Object3D } from '../core/Object3D';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function Scene () {
-	this.isScene = this.isObject3D = true;
+function Scene() {
 
 	Object3D.call( this );
 

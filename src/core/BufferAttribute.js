@@ -8,8 +8,7 @@ import { _Math } from '../math/Math';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function BufferAttribute ( array, itemSize, normalized ) {
-	this.isBufferAttribute = true;
+function BufferAttribute( array, itemSize, normalized ) {
 
 	this.uuid = _Math.generateUUID();
 
@@ -22,11 +21,13 @@ function BufferAttribute ( array, itemSize, normalized ) {
 	this.version = 0;
 	this.normalized = normalized === true;
 
-};
+}
 
 BufferAttribute.prototype = {
 
 	constructor: BufferAttribute,
+
+	isBufferAttribute: true,
 
 	get count() {
 
@@ -312,79 +313,68 @@ BufferAttribute.prototype = {
 
 //
 
-function Int8Attribute ( array, itemSize ) {
-	this.isInt8Attribute = true;
+function Int8Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Int8Array( array ), itemSize );
 
-};
+}
 
-function Uint8Attribute ( array, itemSize ) {
-	this.isUint8Attribute = true;
+function Uint8Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Uint8Array( array ), itemSize );
 
-};
+}
 
-function Uint8ClampedAttribute ( array, itemSize ) {
-	this.isUint8ClampedAttribute = true;
+function Uint8ClampedAttribute( array, itemSize ) {
 
 	return new BufferAttribute( new Uint8ClampedArray( array ), itemSize );
 
-};
+}
 
-function Int16Attribute ( array, itemSize ) {
-	this.isInt16Attribute = true;
+function Int16Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Int16Array( array ), itemSize );
 
-};
+}
 
-function Uint16Attribute ( array, itemSize ) {
-	this.isUint16Attribute = true;
+function Uint16Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Uint16Array( array ), itemSize );
 
-};
+}
 
-function Int32Attribute ( array, itemSize ) {
-	this.isInt32Attribute = true;
+function Int32Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Int32Array( array ), itemSize );
 
-};
+}
 
-function Uint32Attribute ( array, itemSize ) {
-	this.isUint32Attribute = true;
+function Uint32Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Uint32Array( array ), itemSize );
 
-};
+}
 
-function Float32Attribute ( array, itemSize ) {
-	this.isFloat32Attribute = true;
+function Float32Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Float32Array( array ), itemSize );
 
-};
+}
 
-function Float64Attribute ( array, itemSize ) {
-	this.isFloat64Attribute = true;
+function Float64Attribute( array, itemSize ) {
 
 	return new BufferAttribute( new Float64Array( array ), itemSize );
 
-};
-
+}
 
 // Deprecated
 
-function DynamicBufferAttribute ( array, itemSize ) {
-	this.isDynamicBufferAttribute = true;
+function DynamicBufferAttribute( array, itemSize ) {
 
 	console.warn( 'THREE.DynamicBufferAttribute has been removed. Use new THREE.BufferAttribute().setDynamic( true ) instead.' );
 	return new BufferAttribute( array, itemSize ).setDynamic( true );
 
-};
+}
 
 
 export {

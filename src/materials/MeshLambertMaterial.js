@@ -40,8 +40,7 @@ import { Color } from '../math/Color';
  * }
  */
 
-function MeshLambertMaterial ( parameters ) {
-	this.isMeshLambertMaterial = this.isMaterial = true;
+function MeshLambertMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -85,6 +84,8 @@ function MeshLambertMaterial ( parameters ) {
 
 MeshLambertMaterial.prototype = Object.create( Material.prototype );
 MeshLambertMaterial.prototype.constructor = MeshLambertMaterial;
+
+MeshLambertMaterial.prototype.isMeshLambertMaterial = true;
 
 MeshLambertMaterial.prototype.copy = function ( source ) {
 

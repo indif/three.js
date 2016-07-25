@@ -8,8 +8,7 @@ import { Vector3 } from '../math/Vector3';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function LensFlare ( texture, size, distance, blending, color ) {
-	this.isLensFlare = true;
+function LensFlare( texture, size, distance, blending, color ) {
 
 	Object3D.call( this );
 
@@ -29,6 +28,8 @@ function LensFlare ( texture, size, distance, blending, color ) {
 LensFlare.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: LensFlare,
+
+	isLensFlare: true,
 
 	copy: function ( source ) {
 

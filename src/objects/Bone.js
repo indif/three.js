@@ -6,8 +6,7 @@ import { Object3D } from '../core/Object3D';
  * @author ikerr / http://verold.com
  */
 
-function Bone ( skin ) {
-	this.isBone = true;
+function Bone( skin ) {
 
 	Object3D.call( this );
 
@@ -20,6 +19,8 @@ function Bone ( skin ) {
 Bone.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Bone,
+
+	isBone: true,
 
 	copy: function ( source ) {
 

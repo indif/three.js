@@ -5,8 +5,7 @@
  * @author zz85 / http://www.lab4games.net/zz85/blog
  */
 
-function Vector2 ( x, y ) {
-	this.isVector2 = true;
+function Vector2( x, y ) {
 
 	this.x = x || 0;
 	this.y = y || 0;
@@ -16,6 +15,8 @@ function Vector2 ( x, y ) {
 Vector2.prototype = {
 
 	constructor: Vector2,
+
+	isVector2: true,
 
 	get width() {
 

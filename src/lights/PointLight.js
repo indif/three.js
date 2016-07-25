@@ -7,8 +7,7 @@ import { LightShadow } from './LightShadow';
  */
 
 
-function PointLight ( color, intensity, distance, decay ) {
-	this.isPointLight = true;
+function PointLight( color, intensity, distance, decay ) {
 
 	Light.call( this, color, intensity );
 
@@ -38,6 +37,8 @@ function PointLight ( color, intensity, distance, decay ) {
 PointLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	constructor: PointLight,
+
+	isPointLight: true,
 
 	copy: function ( source ) {
 

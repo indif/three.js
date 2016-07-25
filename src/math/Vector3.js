@@ -11,8 +11,7 @@ import { Quaternion } from './Quaternion';
  * @author WestLangley / http://github.com/WestLangley
  */
 
-function Vector3 ( x, y, z ) {
-	this.isVector3 = true;
+function Vector3( x, y, z ) {
 
 	this.x = x || 0;
 	this.y = y || 0;
@@ -23,6 +22,8 @@ function Vector3 ( x, y, z ) {
 Vector3.prototype = {
 
 	constructor: Vector3,
+
+	isVector3: true,
 
 	set: function ( x, y, z ) {
 
@@ -602,9 +603,9 @@ Vector3.prototype = {
 	projectOnVector: function ( vector ) {
 
 		var scalar = vector.dot( this ) / vector.lengthSq();
-	
+
 		return this.copy( vector ).multiplyScalar( scalar );
-	
+
 	},
 
 	projectOnPlane: function () {

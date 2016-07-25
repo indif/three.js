@@ -2,8 +2,7 @@
 * @author mrdoob / http://mrdoob.com/
 */
 
-function WebGLBufferRenderer ( _gl, extensions, _infoRender ) {
-	this.isWebGLBufferRenderer = true;
+function WebGLBufferRenderer( _gl, extensions, _infoRender ) {
 
 	var mode;
 

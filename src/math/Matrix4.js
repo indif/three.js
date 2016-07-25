@@ -14,8 +14,7 @@ import { Vector3 } from './Vector3';
  * @author WestLangley / http://github.com/WestLangley
  */
 
-function Matrix4 () {
-	this.isMatrix4 = true;
+function Matrix4() {
 
 	this.elements = new Float32Array( [
 
@@ -37,6 +36,8 @@ function Matrix4 () {
 Matrix4.prototype = {
 
 	constructor: Matrix4,
+
+	isMatrix4: true,
 
 	set: function ( n11, n12, n13, n14, n21, n22, n23, n24, n31, n32, n33, n34, n41, n42, n43, n44 ) {
 
@@ -637,7 +638,7 @@ Matrix4.prototype = {
 			return this.identity();
 
 		}
-		
+
 		var detInv = 1 / det;
 
 		te[ 0 ] = t11 * detInv;

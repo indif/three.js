@@ -9,8 +9,7 @@ import { _Math } from '../math/Math';
  * @author tschw
  */
 
-function PerspectiveCamera ( fov, aspect, near, far ) {
-	this.isPerspectiveCamera = true;
+function PerspectiveCamera( fov, aspect, near, far ) {
 
 	Camera.call( this );
 
@@ -36,6 +35,8 @@ function PerspectiveCamera ( fov, aspect, near, far ) {
 PerspectiveCamera.prototype = Object.assign( Object.create( Camera.prototype ), {
 
 	constructor: PerspectiveCamera,
+
+	isPerspectiveCamera: true,
 
 	copy: function ( source ) {
 

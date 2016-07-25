@@ -4,8 +4,7 @@ import { _Math } from '../math/Math';
  * @author benaadams / https://twitter.com/ben_a_adams
  */
 
-function InterleavedBufferAttribute ( interleavedBuffer, itemSize, offset, normalized ) {
-	this.isInterleavedBufferAttribute = true;
+function InterleavedBufferAttribute( interleavedBuffer, itemSize, offset, normalized ) {
 
 	this.uuid = _Math.generateUUID();
 
@@ -21,6 +20,8 @@ function InterleavedBufferAttribute ( interleavedBuffer, itemSize, offset, norma
 InterleavedBufferAttribute.prototype = {
 
 	constructor: InterleavedBufferAttribute,
+
+	isInterleavedBufferAttribute: true,
 
 	get length() {
 

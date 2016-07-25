@@ -10,8 +10,7 @@ import { Sphere } from '../../math/Sphere';
  * @author WestLangley / http://github.com/WestLangley
 */
 
-function PolyhedronGeometry ( vertices, indices, radius, detail ) {
-	this.isPolyhedronGeometry = this.isGeometry = true;
+function PolyhedronGeometry( vertices, indices, radius, detail ) {
 
 	Geometry.call( this );
 

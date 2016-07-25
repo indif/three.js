@@ -10,8 +10,7 @@ import { Matrix4 } from '../math/Matrix4';
  * @author ikerr / http://verold.com
  */
 
-function SkinnedMesh ( geometry, material, useVertexTexture ) {
-	this.isSkinnedMesh = true;
+function SkinnedMesh( geometry, material, useVertexTexture ) {
 
 	Mesh.call( this, geometry, material );
 
@@ -76,6 +75,8 @@ function SkinnedMesh ( geometry, material, useVertexTexture ) {
 SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 
 	constructor: SkinnedMesh,
+
+	isSkinnedMesh: true,
 
 	bind: function( skeleton, bindMatrix ) {
 

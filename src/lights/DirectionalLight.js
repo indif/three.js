@@ -7,8 +7,7 @@ import { Object3D } from '../core/Object3D';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function DirectionalLight ( color, intensity ) {
-	this.isDirectionalLight = true;
+function DirectionalLight( color, intensity ) {
 
 	Light.call( this, color, intensity );
 
@@ -26,6 +25,8 @@ function DirectionalLight ( color, intensity ) {
 DirectionalLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	constructor: DirectionalLight,
+
+	isDirectionalLight: true,
 
 	copy: function ( source ) {
 

@@ -4,8 +4,7 @@ import { _Math } from '../math/Math';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function MultiMaterial ( materials ) {
-	this.isMultiMaterial = true;
+function MultiMaterial( materials ) {
 
 	this.uuid = _Math.generateUUID();
 
@@ -20,6 +19,8 @@ function MultiMaterial ( materials ) {
 MultiMaterial.prototype = {
 
 	constructor: MultiMaterial,
+
+	isMultiMaterial: true,
 
 	toJSON: function ( meta ) {
 

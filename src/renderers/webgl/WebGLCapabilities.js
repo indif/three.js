@@ -1,5 +1,4 @@
-function WebGLCapabilities ( gl, extensions, parameters ) {
-	this.isWebGLCapabilities = true;
+function WebGLCapabilities( gl, extensions, parameters ) {
 
 	var maxAnisotropy;
 

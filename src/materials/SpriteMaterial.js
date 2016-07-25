@@ -14,8 +14,7 @@ import { Color } from '../math/Color';
  * }
  */
 
-function SpriteMaterial ( parameters ) {
-	this.isSpriteMaterial = this.isMaterial = true;
+function SpriteMaterial( parameters ) {
 
 	Material.call( this );
 

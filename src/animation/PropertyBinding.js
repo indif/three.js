@@ -8,8 +8,7 @@
  * @author tschw
  */
 
-function PropertyBinding ( rootNode, path, parsedPath ) {
-	this.isPropertyBinding = true;
+function PropertyBinding( rootNode, path, parsedPath ) {
 
 	this.path = path;
 	this.parsedPath = parsedPath ||

@@ -13,8 +13,7 @@ import { LineCurve } from '../curves/LineCurve';
  *  curves, but retains the api of a curve
  **************************************************************/
 
-function CurvePath () {
-	this.isCurvePath = true;
+function CurvePath() {
 
 	this.curves = [];
 

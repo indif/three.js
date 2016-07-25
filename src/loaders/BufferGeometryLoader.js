@@ -9,8 +9,7 @@ import { DefaultLoadingManager } from './LoadingManager';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function BufferGeometryLoader ( manager ) {
-	this.isBufferGeometryLoader = true;
+function BufferGeometryLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 

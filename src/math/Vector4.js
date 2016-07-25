@@ -6,8 +6,7 @@
  * @author WestLangley / http://github.com/WestLangley
  */
 
-function Vector4 ( x, y, z, w ) {
-	this.isVector4 = true;
+function Vector4( x, y, z, w ) {
 
 	this.x = x || 0;
 	this.y = y || 0;
@@ -19,6 +18,8 @@ function Vector4 ( x, y, z, w ) {
 Vector4.prototype = {
 
 	constructor: Vector4,
+
+	isVector4: true,
 
 	set: function ( x, y, z, w ) {
 

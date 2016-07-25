@@ -12,8 +12,7 @@ import { KeyframeTrackConstructor } from '../KeyframeTrackConstructor';
  * @author tschw
  */
 
-function QuaternionKeyframeTrack ( name, times, values, interpolation ) {
-	this.isQuaternionKeyframeTrack = true;
+function QuaternionKeyframeTrack( name, times, values, interpolation ) {
 
 	KeyframeTrackConstructor.call( this, name, times, values, interpolation );
 

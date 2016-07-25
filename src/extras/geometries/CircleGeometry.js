@@ -5,8 +5,7 @@ import { CircleBufferGeometry } from './CircleBufferGeometry';
  * @author hughes
  */
 
-function CircleGeometry ( radius, segments, thetaStart, thetaLength ) {
-	this.isCircleGeometry = this.isGeometry = true;
+function CircleGeometry( radius, segments, thetaStart, thetaLength ) {
 
 	Geometry.call( this );
 

@@ -6,8 +6,7 @@ import { Vector3 } from '../math/Vector3';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Face3 ( a, b, c, normal, color, materialIndex ) {
-	this.isFace3 = true;
+function Face3( a, b, c, normal, color, materialIndex ) {
 
 	this.a = a;
 	this.b = b;

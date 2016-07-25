@@ -4,8 +4,7 @@ import { Object3D } from '../../core/Object3D';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function ImmediateRenderObject ( material ) {
-	this.isImmediateRenderObject = this.isObject3D = true;
+function ImmediateRenderObject( material ) {
 
 	Object3D.call( this );
 
@@ -16,6 +15,8 @@ function ImmediateRenderObject ( material ) {
 
 ImmediateRenderObject.prototype = Object.create( Object3D.prototype );
 ImmediateRenderObject.prototype.constructor = ImmediateRenderObject;
+
+ImmediateRenderObject.prototype.isImmediateRenderObject = true;
 
 
 export { ImmediateRenderObject };

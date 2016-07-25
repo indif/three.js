@@ -11,8 +11,7 @@ import { Vector2 } from '../../math/Vector2';
  *
  */
 
-function ParametricGeometry ( func, slices, stacks ) {
-	this.isParametricGeometry = this.isGeometry = true;
+function ParametricGeometry( func, slices, stacks ) {
 
 	Geometry.call( this );
 

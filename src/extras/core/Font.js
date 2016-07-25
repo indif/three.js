@@ -6,14 +6,15 @@ import { ShapePath } from './Path';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function Font ( data ) {
-	this.isFont = true;
+function Font( data ) {
 
 	this.data = data;
 
 };
 
 Object.assign( Font.prototype, {
+
+	isFont: true,
 
 	generateShapes: function ( text, size, divisions ) {
 

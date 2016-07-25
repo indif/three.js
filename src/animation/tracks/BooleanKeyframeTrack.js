@@ -12,8 +12,7 @@ import { KeyframeTrackConstructor } from '../KeyframeTrackConstructor';
  * @author tschw
  */
 
-function BooleanKeyframeTrack ( name, times, values ) {
-	this.isBooleanKeyframeTrack = true;
+function BooleanKeyframeTrack( name, times, values ) {
 
 	KeyframeTrackConstructor.call( this, name, times, values );
 

@@ -10,8 +10,7 @@ import { BufferGeometry } from '../core/BufferGeometry';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Points ( geometry, material ) {
-	this.isPoints = true;
+function Points( geometry, material ) {
 
 	Object3D.call( this );
 
@@ -25,6 +24,8 @@ function Points ( geometry, material ) {
 Points.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Points,
+
+	isPoints: true,
 
 	raycast: ( function () {
 

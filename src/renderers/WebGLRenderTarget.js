@@ -15,8 +15,7 @@ import { _Math } from '../math/Math';
  * Texture parameters for an auto-generated target texture
  * depthBuffer/stencilBuffer: Booleans to indicate if we should generate these buffers
 */
-function WebGLRenderTarget ( width, height, options ) {
-	this.isWebGLRenderTarget = true;
+function WebGLRenderTarget( width, height, options ) {
 
 	this.uuid = _Math.generateUUID();
 
@@ -41,6 +40,8 @@ function WebGLRenderTarget ( width, height, options ) {
 };
 
 Object.assign( WebGLRenderTarget.prototype, EventDispatcher.prototype, {
+
+	isWebGLRenderTarget: true,
 
 	setSize: function ( width, height ) {
 

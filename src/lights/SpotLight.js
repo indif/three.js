@@ -6,8 +6,7 @@ import { Object3D } from '../core/Object3D';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function SpotLight ( color, intensity, distance, angle, penumbra, decay ) {
-	this.isSpotLight = true;
+function SpotLight( color, intensity, distance, angle, penumbra, decay ) {
 
 	Light.call( this, color, intensity );
 
@@ -43,6 +42,8 @@ function SpotLight ( color, intensity, distance, angle, penumbra, decay ) {
 SpotLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	constructor: SpotLight,
+
+	isSpotLight: true,
 
 	copy: function ( source ) {
 

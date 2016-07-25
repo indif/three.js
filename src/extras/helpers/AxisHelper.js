@@ -9,8 +9,7 @@ import { BufferGeometry } from '../../core/BufferGeometry';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function AxisHelper ( size ) {
-	this.isAxisHelper = this.isLineSegments = true;
+function AxisHelper( size ) {
 
 	size = size || 1;
 

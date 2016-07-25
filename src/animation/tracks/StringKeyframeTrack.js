@@ -12,8 +12,7 @@ import { KeyframeTrackConstructor } from '../KeyframeTrackConstructor';
  * @author tschw
  */
 
-function StringKeyframeTrack ( name, times, values, interpolation ) {
-	this.isStringKeyframeTrack = true;
+function StringKeyframeTrack( name, times, values, interpolation ) {
 
 	KeyframeTrackConstructor.call( this, name, times, values, interpolation );
 

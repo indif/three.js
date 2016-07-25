@@ -4,8 +4,7 @@ import { BufferGeometry } from './BufferGeometry';
  * @author benaadams / https://twitter.com/ben_a_adams
  */
 
-function InstancedBufferGeometry () {
-	this.isInstancedBufferGeometry = this.isBufferGeometry = true;
+function InstancedBufferGeometry() {
 
 	BufferGeometry.call( this );
 
@@ -16,6 +15,8 @@ function InstancedBufferGeometry () {
 
 InstancedBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
 InstancedBufferGeometry.prototype.constructor = InstancedBufferGeometry;
+
+InstancedBufferGeometry.prototype.isBufferGeometry = true;
 
 InstancedBufferGeometry.prototype.addGroup = function ( start, count, instances ) {
 

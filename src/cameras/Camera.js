@@ -9,8 +9,7 @@ import { Vector3 } from '../math/Vector3';
  * @author WestLangley / http://github.com/WestLangley
 */
 
-function Camera () {
-	this.isCamera = this.isObject3D = true;
+function Camera() {
 
 	Object3D.call( this );
 
@@ -23,6 +22,8 @@ function Camera () {
 
 Camera.prototype = Object.create( Object3D.prototype );
 Camera.prototype.constructor = Camera;
+
+Camera.prototype.isCamera = true;
 
 Camera.prototype.getWorldDirection = function () {
 

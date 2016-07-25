@@ -7,8 +7,7 @@ import { SpriteMaterial } from '../materials/SpriteMaterial';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Sprite ( material ) {
-	this.isSprite = true;
+function Sprite( material ) {
 
 	Object3D.call( this );
 
@@ -21,6 +20,8 @@ function Sprite ( material ) {
 Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Sprite,
+
+	isSprite: true,
 
 	raycast: ( function () {
 

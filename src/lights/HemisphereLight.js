@@ -6,8 +6,7 @@ import { Object3D } from '../core/Object3D';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function HemisphereLight ( skyColor, groundColor, intensity ) {
-	this.isHemisphereLight = true;
+function HemisphereLight( skyColor, groundColor, intensity ) {
 
 	Light.call( this, skyColor, intensity );
 
@@ -25,6 +24,8 @@ function HemisphereLight ( skyColor, groundColor, intensity ) {
 HemisphereLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	constructor: HemisphereLight,
+
+	isHemisphereLight: true,
 
 	copy: function ( source ) {
 

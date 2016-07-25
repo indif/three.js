@@ -4,8 +4,7 @@ import { _Math } from '../math/Math';
  * @author benaadams / https://twitter.com/ben_a_adams
  */
 
-function InterleavedBuffer ( array, stride ) {
-	this.isInterleavedBuffer = true;
+function InterleavedBuffer( array, stride ) {
 
 	this.uuid = _Math.generateUUID();
 
@@ -22,6 +21,8 @@ function InterleavedBuffer ( array, stride ) {
 InterleavedBuffer.prototype = {
 
 	constructor: InterleavedBuffer,
+
+	isInterleavedBuffer: true,
 
 	get length () {
 

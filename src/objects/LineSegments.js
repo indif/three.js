@@ -4,8 +4,7 @@ import { Line } from './Line';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function LineSegments ( geometry, material ) {
-	this.isLineSegments = true;
+function LineSegments( geometry, material ) {
 
 	Line.call( this, geometry, material );
 
@@ -15,7 +14,9 @@ function LineSegments ( geometry, material ) {
 
 LineSegments.prototype = Object.assign( Object.create( Line.prototype ), {
 
-	constructor: LineSegments
+	constructor: LineSegments,
+
+	isLineSegments: true
 
 } );
 

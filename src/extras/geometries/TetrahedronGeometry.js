@@ -4,8 +4,7 @@ import { PolyhedronGeometry } from './PolyhedronGeometry';
  * @author timothypratley / https://github.com/timothypratley
  */
 
-function TetrahedronGeometry ( radius, detail ) {
-	this.isTetrahedronGeometry = this.isPolyhedronGeometry = this.isGeometry = true;
+function TetrahedronGeometry( radius, detail ) {
 
 	var vertices = [
 		 1,  1,  1,   - 1, - 1,  1,   - 1,  1, - 1,    1, - 1, - 1

@@ -6,8 +6,7 @@ import { Color } from '../math/Color';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Light ( color, intensity ) {
-	this.isLight = true;
+function Light( color, intensity ) {
 
 	Object3D.call( this );
 
@@ -23,6 +22,8 @@ function Light ( color, intensity ) {
 Light.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Light,
+
+	isLight: true,
 
 	copy: function ( source ) {
 

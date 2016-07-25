@@ -20,8 +20,7 @@ import { ExtrudeGeometry } from './ExtrudeGeometry';
  * }
  **/
 
-function ShapeGeometry ( shapes, options ) {
-	this.isShapeGeometry = this.isGeometry = true;
+function ShapeGeometry( shapes, options ) {
 
 	Geometry.call( this );
 

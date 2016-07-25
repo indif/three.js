@@ -5,8 +5,7 @@ import { Color } from '../math/Color';
  * @author alteredq / http://alteredqualia.com/
  */
 
-function Fog ( color, near, far ) {
-	this.isFog = true;
+function Fog( color, near, far ) {
 
 	this.name = '';
 
@@ -16,6 +15,8 @@ function Fog ( color, near, far ) {
 	this.far = ( far !== undefined ) ? far : 1000;
 
 };
+
+Fog.prototype.isFog = true;
 
 Fog.prototype.clone = function () {
 

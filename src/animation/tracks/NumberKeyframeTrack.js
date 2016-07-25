@@ -10,8 +10,7 @@ import { KeyframeTrackConstructor } from '../KeyframeTrackConstructor';
  * @author tschw
  */
 
-function NumberKeyframeTrack ( name, times, values, interpolation ) {
-	this.isNumberKeyframeTrack = true;
+function NumberKeyframeTrack( name, times, values, interpolation ) {
 
 	KeyframeTrackConstructor.call( this, name, times, values, interpolation );
 

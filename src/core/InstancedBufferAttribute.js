@@ -4,8 +4,7 @@ import { BufferAttribute } from './BufferAttribute';
  * @author benaadams / https://twitter.com/ben_a_adams
  */
 
-function InstancedBufferAttribute ( array, itemSize, meshPerAttribute ) {
-	this.isInstancedBufferAttribute = this.isBufferAttribute = true;
+function InstancedBufferAttribute( array, itemSize, meshPerAttribute ) {
 
 	BufferAttribute.call( this, array, itemSize );
 
@@ -15,6 +14,8 @@ function InstancedBufferAttribute ( array, itemSize, meshPerAttribute ) {
 
 InstancedBufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 InstancedBufferAttribute.prototype.constructor = InstancedBufferAttribute;
+
+InstancedBufferAttribute.prototype.isInstancedBufferAttribute = true;
 
 InstancedBufferAttribute.prototype.copy = function ( source ) {
 

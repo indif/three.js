@@ -6,8 +6,7 @@ import { WireframeGeometry } from '../geometries/WireframeGeometry';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function WireframeHelper ( object, hex ) {
-	this.isWireframeHelper = this.isLineSegments = true;
+function WireframeHelper( object, hex ) {
 
 	var color = ( hex !== undefined ) ? hex : 0xffffff;
 

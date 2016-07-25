@@ -4,8 +4,7 @@ import { Texture } from './Texture';
  * @author mrdoob / http://mrdoob.com/
  */
 
-function CanvasTexture ( canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy ) {
-	this.isCanvasTexture = this.isTexture = true;
+function CanvasTexture( canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy ) {
 
 	Texture.call( this, canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy );
 

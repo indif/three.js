@@ -6,8 +6,7 @@ import { Vector2 } from '../../math/Vector2';
 * @author mrdoob / http://mrdoob.com/
 */
 
-function WebGLLights () {
-	this.isWebGLLights = true;
+function WebGLLights() {
 
 	var lights = {};
 

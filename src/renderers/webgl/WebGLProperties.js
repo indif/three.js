@@ -2,8 +2,7 @@
 * @author fordacious / fordacious.github.io
 */
 
-function WebGLProperties () {
-	this.isWebGLProperties = true;
+function WebGLProperties() {
 
 	var properties = {};
 
