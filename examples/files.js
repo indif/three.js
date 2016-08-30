@@ -264,7 +264,9 @@ var files = {
 		"webvr_rollercoaster",
 		"webvr_shadow",
 		"webvr_video",
-		"webvr_vive"
+		"webvr_vive",
+		"webvr_vive_paint",
+		"webvr_vive_sculpt"
 	],
 	"css3d": [
 		"css3d_molecules",
