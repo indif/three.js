@@ -38,14 +38,15 @@
 
 			//
 
-			var clock = new THREE.Clock();
-
 			var container;
 			var camera, scene, renderer;
 			var effect, controls;
 			var controller1, controller2;
 
-			var room;
+			var raycaster, intersected = [];
+			var tempMatrix = new THREE.Matrix4();
+
+			var room, group;
 
 			init();
 			animate();
@@ -81,6 +82,9 @@
 				light.position.set( 1, 1, 1 ).normalize();
 				scene.add( light );
 
+				group = new THREE.Group();
+				scene.add( group );
+
 				var geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
 
 				for ( var i = 0; i < 200; i ++ ) {
@@ -88,7 +92,7 @@
 					var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
 					object.position.x = Math.random() * 4 - 2;
-					object.position.y = Math.random() * 4 - 2;
+					object.position.y = Math.random() * 6;
 					object.position.z = Math.random() * 4 - 2;
 
 					object.rotation.x = Math.random() * 2 * Math.PI;
@@ -104,57 +108,9 @@
 					object.userData.velocity.y = Math.random() * 0.01 - 0.005;
 					object.userData.velocity.z = Math.random() * 0.01 - 0.005;
 
-					room.add( object );
+					group.add( object );
 
 				}
-
-				var material = new THREE.MeshStandardMaterial();
-
-				var loader = new THREE.OBJLoader();
-				loader.setPath( 'models/obj/cerberus/' );
-				loader.load( 'Cerberus.obj', function ( group ) {
-
-					// var material = new THREE.MeshBasicMaterial( { wireframe: true } );
-
-					var loader = new THREE.TextureLoader();
-					loader.setPath( 'models/obj/cerberus/' );
-
-					material.roughness = 1;
-					material.metalness = 1;
-
-					material.map = loader.load( 'Cerberus_A.jpg' );
-					material.roughnessMap = loader.load( 'Cerberus_R.jpg' );
-					material.metalnessMap = loader.load( 'Cerberus_M.jpg' );
-					material.normalMap = loader.load( 'Cerberus_N.jpg' );
-
-					material.map.wrapS = THREE.RepeatWrapping;
-					material.roughnessMap.wrapS = THREE.RepeatWrapping;
-					material.metalnessMap.wrapS = THREE.RepeatWrapping;
-					material.normalMap.wrapS = THREE.RepeatWrapping;
-
-					group.traverse( function ( child ) {
-
-						if ( child instanceof THREE.Mesh ) {
-
-							child.material = material;
-
-						}
-
-					} );
-
-					group.position.y = - 2;
-					group.rotation.y = - Math.PI / 2;
-					room.add( group );
-
-				} );
-
-				var loader = new THREE.CubeTextureLoader();
-				loader.setPath( 'textures/cube/pisa/' );
-				material.envMap = loader.load( [
-					"px.png", "nx.png",
-					"py.png", "ny.png",
-					"pz.png", "nz.png"
-				] );
 
 				//
 
@@ -172,10 +128,14 @@
 
 				controller1 = new THREE.ViveController( 0 );
 				controller1.standingMatrix = controls.getStandingMatrix();
+				controller1.addEventListener( 'triggerdown', onTriggerDown );
+				controller1.addEventListener( 'triggerup', onTriggerUp );
 				scene.add( controller1 );
 
 				controller2 = new THREE.ViveController( 1 );
 				controller2.standingMatrix = controls.getStandingMatrix();
+				controller2.addEventListener( 'triggerdown', onTriggerDown );
+				controller2.addEventListener( 'triggerup', onTriggerUp );
 				scene.add( controller2 );
 
 				var loader = new THREE.OBJLoader();
@@ -193,6 +153,21 @@
 					controller2.add( object.clone() );
 
 				} );
+
+				//
+
+				var geometry = new THREE.Geometry();
+				geometry.vertices.push( new THREE.Vector3( 0, 0, 0 ) );
+				geometry.vertices.push( new THREE.Vector3( 0, 0, - 5 ) );
+				var line = new THREE.Line( geometry );
+
+				controller1.add( line.clone() );
+				controller2.add( line.clone() );
+
+				raycaster = new THREE.Raycaster();
+
+
+				//
 
 				effect = new THREE.VREffect( renderer );
 
@@ -217,6 +192,88 @@
 
 			}
 
+			function onTriggerDown( event ) {
+
+				var controller = event.target;
+
+				var intersections = getIntersections( controller );
+
+				if ( intersections.length > 0 ) {
+
+					var intersection = intersections[ 0 ];
+
+					tempMatrix.getInverse( controller.matrixWorld );
+
+					var object = intersection.object;
+					object.matrix.premultiply( tempMatrix );
+					object.matrix.decompose( object.position, object.quaternion, object.scale );
+					controller.add( object );
+
+					controller.userData.selected = object;
+
+				}
+
+			}
+
+			function onTriggerUp( event ) {
+
+				var controller = event.target;
+
+				if ( controller.userData.selected !== undefined ) {
+
+					var object = controller.userData.selected;
+
+					object.matrix.premultiply( controller.matrixWorld );
+					object.matrix.decompose( object.position, object.quaternion, object.scale );
+					group.add( object );
+
+					controller.userData.selected = undefined;
+
+				}
+
+
+			}
+
+			function getIntersections( controller ) {
+
+				tempMatrix.identity().extractRotation( controller.matrixWorld );
+
+				raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
+				raycaster.ray.direction.set( 0, 0, -1 ).applyMatrix4( tempMatrix );
+
+				return raycaster.intersectObjects( group.children );
+
+			}
+
+			function intersectObjects( controller ) {
+
+				// Do not highlight when already selected
+
+				if ( controller.userData.selected !== undefined ) return;
+
+				var intersections = getIntersections( controller );
+
+				if ( intersections.length > 0 ) {
+
+					var intersection = intersections[ 0 ];
+					intersection.object.material.emissive.r = 1;
+					intersected.push( intersection.object );
+
+				}
+
+			}
+
+			function cleanIntersected() {
+
+				while ( intersected.length ) {
+
+					var object = intersected.pop();
+					object.material.emissive.r = 0;
+
+				}
+
+			}
+
 			//
 
 			function animate() {
@@ -228,45 +285,15 @@
 
 			function render() {
 
-				var delta = clock.getDelta() * 60;
-
 				controller1.update();
 				controller2.update();
 
 				controls.update();
 
-				for ( var i = 0; i < room.children.length; i ++ ) {
+				cleanIntersected();
 
-					var cube = room.children[ i ];
-
-					if ( cube.geometry instanceof THREE.BoxGeometry === false ) continue;
-
-					// cube.position.add( cube.userData.velocity );
-
-					if ( cube.position.x < - 3 || cube.position.x > 3 ) {
-
-						cube.position.x = THREE.Math.clamp( cube.position.x, - 3, 3 );
-						cube.userData.velocity.x = - cube.userData.velocity.x;
-
-					}
-
-					if ( cube.position.y < - 3 || cube.position.y > 3 ) {
-
-						cube.position.y = THREE.Math.clamp( cube.position.y, - 3, 3 );
-						cube.userData.velocity.y = - cube.userData.velocity.y;
-
-					}
-
-					if ( cube.position.z < - 3 || cube.position.z > 3 ) {
-
-						cube.position.z = THREE.Math.clamp( cube.position.z, - 3, 3 );
-						cube.userData.velocity.z = - cube.userData.velocity.z;
-
-					}
-
-					cube.rotation.x += 0.01 * delta;
-
-				}
+				intersectObjects( controller1 );
+				intersectObjects( controller2 );
 
 				effect.render( scene, camera );
 
