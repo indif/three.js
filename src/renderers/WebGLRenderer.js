@@ -760,6 +760,12 @@ function WebGLRenderer( parameters ) {
 
 			}
 
+			for ( var i = activeInfluences.length, il = morphInfluences.length; i < il; i ++ ) {
+
+				morphInfluences[ i ] = 0.0;
+
+			}
+
 			program.getUniforms().setValue(
 					_gl, 'morphTargetInfluences', morphInfluences );
 
@@ -806,7 +812,7 @@ function WebGLRenderer( parameters ) {
 		//
 
 		var dataStart = 0;
-		var dataCount = Infinity;
+		var dataCount = 0;
 
 		if ( index !== null ) {
 
@@ -828,6 +834,8 @@ function WebGLRenderer( parameters ) {
 		var drawEnd = Math.min( dataStart + dataCount, rangeStart + rangeCount, groupStart + groupCount ) - 1;
 
 		var drawCount = Math.max( 0, drawEnd - drawStart + 1 );
+
+		if ( drawCount === 0 ) return;
 
 		//
 
@@ -1963,9 +1971,7 @@ function WebGLRenderer( parameters ) {
 
 		if ( dynUniforms !== null ) {
 
-			WebGLUniforms.evalDynamic(
-					dynUniforms, m_uniforms, object, camera );
-
+			WebGLUniforms.evalDynamic( dynUniforms, m_uniforms, object, material, camera );
 			WebGLUniforms.upload( _gl, dynUniforms, m_uniforms, _this );
 
 		}
